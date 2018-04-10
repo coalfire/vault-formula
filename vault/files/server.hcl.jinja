@@ -23,3 +23,9 @@ listener "{{ vault.listen_protocol }}" {
 
 default_lease_ttl="{{ vault.default_lease_ttl }}"
 max_lease_ttl="{{ vault.max_lease_ttl }}"
+
+storage "consul" {
+  address = "127.0.0.1:8500"
+  path    = "vault/"
+}
+
