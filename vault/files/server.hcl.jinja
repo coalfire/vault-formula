@@ -18,6 +18,9 @@ listener "{{ vault.listen_protocol }}" {
 {%- if vault.tls_key_file %}
   tls_key_file = "{{ vault.tls_key_file }}"
 {% endif -%}
+{%- if vault.cluster_address %}
+  cluster_addr = "{{ vault.cluster_address }}"
+{% endif -%}
 {% endif %}
 }
 
@@ -28,4 +31,13 @@ storage "consul" {
   address = "127.0.0.1:8500"
   path    = "vault/"
 }
+
+{%- if vault.api_address %}
+api_addr = "{{ vault.api_address }}"
+{% endif -%}
+
+{%- if vault.cluster_address %}
+cluster_addr = "{{ vault.cluster_address }}"
+{% endif -%}
+
 
