@@ -18,7 +18,10 @@ generate self signed SSL certs:
     - require:
       - file: /usr/local/bin/self-cert-gen.sh
       - file: /etc/vault
-{% endif -%}
+    - creates:
+      - /etc/vault/{{ vault.self_signed_cert.hostname }}.pem
+      - /etc/vault/{{ vault.self_signed_cert.hostname }}-nopass.key
+ {% endif -%}
 
 /etc/vault:
   file.directory:
